@@ -47,9 +47,11 @@
  .container__left{
     width:35%;
     min-width:300px;
+    display:flex;
     flex-direction: column;
     align-items:center;
     justify-content: space-around;
+
  }
 
  .score_box{
@@ -96,10 +98,11 @@
 .card-versus__container{
     display:flex;
     flex-direction: column;
-    padding-top: 1rem;
+    justify-items:center;
+    align-items:center;
+    padding-top: 3rem;
     height: 300px;
-    margin-top:2rem;
-
+    
 }
 
 .versus-top,.versus-bottom{
@@ -118,7 +121,7 @@
 }
 
 .card-box{
-    height: 9rem;
+    height: 12rem;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -134,3 +137,11 @@
     
 }
 /* SESSÃO DO CONTAINER DIREITO <------ */
+
+.card{
+    transition:transform 0.2s;
+}
+
+.card:hover{
+    transform: scale(1.2);
+}

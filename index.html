@@ -21,7 +21,7 @@
     <!-- DIV PARA O VIDEO E COLUNAS DOS LADOS-->
     <div class="bg-video">
         <video class="video" autoplay loop muted>
-            <source src="./src/assets/video/yugi.mp4" type="video/mp4">
+            <source src="../src/assets/video/yugi.mp4" type="video/mp4">
         </video>
     </div>
     <!-- COLUNAS DOS LADOS, CONTAINER, ESQUERDA: -->
@@ -36,22 +36,21 @@
             </div>
             
             <div class="card_details frame">
-                <p id="card-name">a</p>
-                <p id="card-type">a</p>
+                <p id="card-name">Selecione</p>
+                <p id="card-type"> uma carta </p>
             </div>
         </div>
     <!-- COLUNA DIREITA: -->
         <div class="container__right">
             <div class="card-box__container">
-                <div class="card-box framed" id="computer-cards">
-
-                </div>
+                <div class="card-box framed" id="computer-cards"></div>
+                
                 <div class="card-versus__container">
                     <div class="versus-top">
                         <div class="card-infield">
                             <img id="player-field-card" height="180px" width="125px">
                         </div>
-                        <img height="100px" src="./src/assets/icons/millenium2.png">
+                        <img height="100px" src="../src/assets/icons/millenium2.png">
                         <div class="card-infield">
                             <img id="computer-field-card" height="180px" width="125px">
                         </div>
@@ -60,9 +59,8 @@
                         <button id="next-duel" class="rpgui-button" onclick="resetDuel()">GANHOU</button>    
                     </div>
                 </div>
-                <div class="card-box framed" id="player-cards">
-    
-                </div>
+                
+                <div class="card-box framed" id="player-cards"></div>
             </div>
         </div>
     </div>
