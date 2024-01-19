@@ -90,18 +90,35 @@ async function setCardsField(cardId) {
 
     let computerCardId = await getRandomCardId();
 
-    state.fieldCards.player.style.display = "block";
-    state.fieldCards.computer.style.display = "block";
+    await ShowHiddenCardFieldsImages(true);
+    await hiddenCardsDetails();
+    await drawCardsInFields(cardId, computerCardId);
 
-    state.fieldCards.player.src = cardData[cardId].img;
-    state.fieldCards.computer.src = cardData[computerCardId].img;
-
-    let duelResult = await checkDuelResults(cardId,computerCardId);
+    let duelResults = await checkDuelResults(cardId, computerCardId);
 
     await updateScore();
-    await drawButton(duelResult);
+    await drawButton(duelResults);    
+}
+async function drawCardsInFields(cardId, computerCardId) {
+    state.fieldCards.player.src = cardData[cardId].img;
+    state.fieldCards.computer.src = cardData[computerCardId].img;
 }
 
+async function ShowHiddenCardFieldsImages(value) {
+    if(value === true) {
+       state.fieldCards.player.style.display = "block";
+       state.fieldCards.computer.style.display = "block";
+} else {
+    state.fieldCards.player.style.display = "none";
+    state.fieldCards.computer.style.display = "none";
+    }
+}  
+
+async function hiddenCardsDetails() {
+    state.cardSprites.avatar.src = "";
+    state.cardSprites.name.innerText = "";
+    state.cardSprites.type.innerText = "";
+}
 /* DESENHAR O BOTÃO DO JOGO */
 
 async function drawButton(text) {
@@ -111,19 +128,6 @@ async function drawButton(text) {
 /*FUNÇÃO PARA ATUALIZAR O ESCORE VISUALMENTE*/
 async function updateScore() {
     state.score.scoreBox.innerHTML = `Win: ${state.score.playerScore} | Lose: ${state.score.computerScore}`
-}
-
-
-/* FUNÇÃO PARA REMOVER TODAS AS CARTAS */
-async function removeAllCardsImages(){
-    let {computerBOX, player1BOX} = state.playerSides;
-    let imgElements = computerBOX.querySelectorAll("img");
-    imgElements.forEach((img) => img.remove());
-
-    cards = state.playerSides.player1BOX; 
-    imgElements = player1BOX.querySelectorAll("img");
-    imgElements.forEach((img) => img.remove());
-
 }
 
 /* FUNÇÃO PARA A LOGICA DO JOGO:*/
@@ -147,7 +151,17 @@ async function checkDuelResults(playerCardId, ComputerCardId) {
     return duelResult
 }
 
-/*FUNÇÕES PARA MOSTRAR A CARTA COM ZOOM*/
+/* FUNÇÃO PARA REMOVER TODAS AS CARTAS */
+async function removeAllCardsImages() {
+    let {computerBOX, player1BOX} = state.playerSides;
+    let imgElements = computerBOX.querySelectorAll("img");
+    imgElements.forEach((img) => img.remove());
+
+    cards = state.playerSides.player1BOX; 
+    imgElements = player1BOX.querySelectorAll("img");
+    imgElements.forEach((img) => img.remove());
+
+}
 
 async function drawSelectCard(index) {
     state.cardSprites.avatar.src = cardData[index].img;
@@ -184,10 +198,11 @@ async function playAudio(status) {
 
 /*FUNÇÃO INICIAL!*/
 function init() {
-    //ShowHiddenCardFieldsImages(false);
-
+    ShowHiddenCardFieldsImages(false);
+    
     drawCards(5, state.playerSides.player1);
     drawCards(5, state.playerSides.computer);
+
     const bgm = document.getElementById("bgm");
     bgm.play();
 }

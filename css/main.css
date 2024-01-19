@@ -1,6 +1,15 @@
 *{
     font-family: 'Press Start 2P', system-ui;
 }
+
+body{
+    cursor: url("../src/cursor/yugicursor.png"), default;
+
+}
+
+button, a, img:hover, button:hover, a:hover{
+    cursor: url("../src/cursor/yamiyugicursorGLOW.png"), auto;
+}
 /* SESSÃO DO VIDEO DE FUNDO! ------> */
 .bg-video{
     position: absolute;
@@ -121,7 +130,7 @@
 }
 
 .card-box{
-    height: 12rem;
+    height: 9rem;
     width: 100%;
     display: flex;
     flex-direction: row;
